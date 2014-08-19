@@ -2730,7 +2730,7 @@ function! s:CreateMaps(modes, target, desc, combo)
                 \ g:NERDMenuMode, '')
     let menu_command = 'menu <silent> ' . menuRoot . '.' . escape(a:desc, ' ')
     if strlen(a:combo)
-        let leader = exists('g:mapleader') ? g:mapleader : '\'
+        let leader = ','
         let menu_command .= '<Tab>' . escape(leader, '\') . a:combo
     endif
     let menu_command .= ' ' . (strlen(a:combo) ? plug : a:target)
@@ -2739,7 +2739,7 @@ function! s:CreateMaps(modes, target, desc, combo)
         if strlen(a:combo)
             execute mode . plug_start . mode . plug_end
             if g:NERDCreateDefaultMappings && !hasmapto(plug, mode)
-                execute mode . 'map <leader>' . a:combo . ' ' . plug
+                execute mode . 'map ,' . a:combo . ' ' . plug
             endif
         endif
         " Check if the user wants the menu to be displayed.
